@@ -11,6 +11,12 @@ const Index = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [filters, setFilters] = useState({
+    brands: [] as string[],
+    priceRange: "all",
+    releaseWindow: "all",
+    inStockOnly: false,
+  });
   const { toast } = useToast();
 
   useEffect(() => {
@@ -33,17 +39,84 @@ const Index = () => {
     fetchSneakers();
   }, [toast]);
 
-  const filteredSneakers = sneakers.filter(
-    (sneaker) =>
-      sneaker.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      sneaker.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      sneaker.colorway.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+  // Get unique brands from sneakers
+  const availableBrands = [...new Set(sneakers.map(sneaker => sneaker.brand))];
+
+  const applyFilters = (sneaker: Sneaker) => {
+    // Brand filter
+    if (filters.brands.length > 0 && !filters.brands.includes(sneaker.brand)) {
+      return false;
+    }
+
+    // Price filter
+    if (filters.priceRange !== "all") {
+      const price = sneaker.price;
+      if (
+        (filters.priceRange === "under-100" && price >= 100) ||
+        (filters.priceRange === "100-200" && (price < 100 || price > 200)) ||
+        (filters.priceRange === "200-300" && (price < 200 || price > 300)) ||
+        (filters.priceRange === "over-300" && price <= 300)
+      ) {
+        return false;
+      }
+    }
+
+    // Release date filter
+    if (filters.releaseWindow !== "all") {
+      const releaseDate = new Date(sneaker.releaseDate);
+      const today = new Date();
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      const weekFromNow = new Date(today);
+      weekFromNow.setDate(weekFromNow.getDate() + 7);
+
+      const monthFromNow = new Date(today);
+      monthFromNow.setMonth(monthFromNow.getMonth() + 1);
+
+      const nextMonth = new Date(today);
+      nextMonth.setMonth(nextMonth.getMonth() + 1);
+      const twoMonthsFromNow = new Date(today);
+      twoMonthsFromNow.setMonth(twoMonthsFromNow.getMonth() + 2);
+
+      if (
+        (filters.releaseWindow === "today" && 
+          !(releaseDate.toDateString() === today.toDateString())) ||
+        (filters.releaseWindow === "this-week" && 
+          !(releaseDate >= today && releaseDate <= weekFromNow)) ||
+        (filters.releaseWindow === "this-month" && 
+          !(releaseDate >= today && releaseDate <= monthFromNow)) ||
+        (filters.releaseWindow === "next-month" && 
+          !(releaseDate >= nextMonth && releaseDate <= twoMonthsFromNow))
+      ) {
+        return false;
+      }
+    }
+
+    // In stock filter
+    if (filters.inStockOnly && !sneaker.inStock) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const filteredSneakers = sneakers
+    .filter(
+      (sneaker) =>
+        (searchQuery === "" ||
+          sneaker.brand.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          sneaker.model.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          sneaker.colorway.toLowerCase().includes(searchQuery.toLowerCase())) &&
+        applyFilters(sneaker)
+    );
 
   const handleFilterClick = () => {
+    // This function is still used for the button click, though most functionality
+    // is now handled directly in the FilterBar component
     toast({
-      title: "Filters",
-      description: "Filter functionality will be added in a future update.",
+      title: "Filters Applied",
+      description: "Your filter settings have been applied.",
     });
   };
 
@@ -90,19 +163,25 @@ const Index = () => {
           <FilterBar 
             searchQuery={searchQuery} 
             setSearchQuery={setSearchQuery} 
-            onFilterClick={handleFilterClick} 
+            onFilterClick={handleFilterClick}
+            filters={filters}
+            setFilters={setFilters}
+            availableBrands={availableBrands}
           />
         </div>
 
         {filteredSneakers.length === 0 ? (
           <div className="text-center py-12">
-            <p className="text-xl text-muted-foreground">No sneakers found matching your search.</p>
+            <p className="text-xl text-muted-foreground">No sneakers found matching your criteria.</p>
           </div>
         ) : (
           <>
             <div className="flex items-center gap-2 mb-4">
               <CalendarDays className="h-5 w-5 text-primary" />
               <h2 className="text-2xl font-semibold">Upcoming Releases</h2>
+              <span className="text-sm text-muted-foreground ml-2">
+                ({filteredSneakers.length} {filteredSneakers.length === 1 ? 'item' : 'items'})
+              </span>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
