@@ -11,6 +11,8 @@ export interface Sneaker {
   retailPrice: number;
   imageUrl: string;
   status: 'upcoming' | 'released' | 'restocked';
+  price: number; // Adding the missing price property
+  inStock: boolean; // Adding the missing inStock property
 }
 
 // Sample data - in a real app, this would come from an API
@@ -22,8 +24,10 @@ const mockSneakers: Sneaker[] = [
     colorway: 'Chicago',
     releaseDate: '2025-05-10T09:00:00Z',
     retailPrice: 180,
+    price: 180, // Added price property
     imageUrl: 'https://images.unsplash.com/photo-1600269452121-4f2416e55c28?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80',
-    status: 'upcoming'
+    status: 'upcoming',
+    inStock: true // Added inStock property
   },
   {
     id: '2',
@@ -32,8 +36,10 @@ const mockSneakers: Sneaker[] = [
     colorway: 'Zebra',
     releaseDate: '2025-05-15T10:00:00Z',
     retailPrice: 220,
+    price: 220,
     imageUrl: 'https://images.unsplash.com/photo-1618898909019-010e4e234c55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-    status: 'upcoming'
+    status: 'upcoming',
+    inStock: false
   },
   {
     id: '3',
@@ -42,8 +48,10 @@ const mockSneakers: Sneaker[] = [
     colorway: 'White Green',
     releaseDate: '2025-04-28T08:00:00Z',
     retailPrice: 120,
+    price: 120,
     imageUrl: 'https://images.unsplash.com/photo-1539185441755-769473a23570?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80',
-    status: 'upcoming'
+    status: 'upcoming',
+    inStock: true
   },
   {
     id: '4',
@@ -52,8 +60,10 @@ const mockSneakers: Sneaker[] = [
     colorway: 'Panda',
     releaseDate: '2025-05-05T10:00:00Z',
     retailPrice: 110,
+    price: 110,
     imageUrl: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-    status: 'upcoming'
+    status: 'upcoming',
+    inStock: true
   },
   {
     id: '5',
@@ -62,8 +72,10 @@ const mockSneakers: Sneaker[] = [
     colorway: 'Bred',
     releaseDate: '2025-06-01T09:00:00Z',
     retailPrice: 210,
+    price: 210,
     imageUrl: 'https://images.unsplash.com/photo-1513188732907-5f732b831ca8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80',
-    status: 'upcoming'
+    status: 'upcoming',
+    inStock: false
   }
 ];
 
