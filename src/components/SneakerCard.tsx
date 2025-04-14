@@ -1,11 +1,12 @@
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Bell, BellRing } from "lucide-react";
+import { Bell, BellRing, FileText } from "lucide-react";
 import { useState } from "react";
 import { toast } from "@/components/ui/sonner";
 import { Sneaker, formatReleaseDate, getRelativeTime } from "@/services/sneakerService";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 interface SneakerCardProps {
   sneaker: Sneaker;
@@ -75,7 +76,10 @@ export default function SneakerCard({ sneaker }: SneakerCardProps) {
             </>
           )}
         </Button>
-        <Button>View Details</Button>
+        <Button as={Link} to={`/sneaker/${sneaker.id}`}>
+          <FileText className="mr-2 h-4 w-4" />
+          View Details
+        </Button>
       </CardFooter>
     </Card>
   );
