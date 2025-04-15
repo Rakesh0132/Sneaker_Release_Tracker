@@ -8,6 +8,7 @@ import Index from "./pages/Index"
 import NotFound from "./pages/NotFound"
 import SneakerDetails from "./pages/SneakerDetails"
 import Profile from "./pages/Profile"
+import Orders from "./pages/Orders"
 
 // Create a new QueryClient instance
 const queryClient = new QueryClient()
@@ -22,7 +23,7 @@ const App = () => (
         <Route path="/" element={<Index />} />
         <Route path="/sneaker/:id" element={<SneakerDetails />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/orders" element={<div className="p-6">Orders page (Coming soon)</div>} />
+        <Route path="/orders" element={<Orders />} />
         <Route path="/favorites" element={<div className="p-6">Favorites page (Coming soon)</div>} />
         <Route path="*" element={<NotFound />} />
       </Routes>
