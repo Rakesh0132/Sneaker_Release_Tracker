@@ -76,10 +76,12 @@ export default function SneakerCard({ sneaker }: SneakerCardProps) {
             </>
           )}
         </Button>
-        <Button as={Link} to={`/sneaker/${sneaker.id}`}>
-          <FileText className="mr-2 h-4 w-4" />
-          View Details
-        </Button>
+        <Link to={`/sneaker/${sneaker.id}`}>
+          <Button>
+            <FileText className="mr-2 h-4 w-4" />
+            View Details
+          </Button>
+        </Link>
       </CardFooter>
     </Card>
   );
