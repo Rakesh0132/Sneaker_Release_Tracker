@@ -1,4 +1,3 @@
-
 // Simulate fetching sneaker data from an API
 // In a real-world scenario, you would replace this with actual API calls
 
@@ -149,6 +148,141 @@ const mockSneakers: Sneaker[] = [
     description: 'The Vans Old Skool in "Black White" features a durable suede and canvas upper, signature side stripe, and a vulcanized rubber outsole with the classic waffle pattern.'
   }
 ];
+
+const additionalSneakers: Sneaker[] = [
+  {
+    id: '11',
+    brand: 'Asics',
+    model: 'Gel-Lyte III',
+    colorway: 'Sage Green',
+    releaseDate: '2025-06-15T10:00:00Z',
+    retailPrice: 130,
+    price: 130,
+    imageUrl: 'https://images.unsplash.com/photo-1512374382149-233c42b6a83b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: true,
+    description: 'The Asics Gel-Lyte III "Sage Green" features a premium suede and mesh upper in a muted green colorway, with the signature split-tongue design and Gel cushioning for comfort.'
+  },
+  {
+    id: '12',
+    brand: 'Saucony',
+    model: 'Shadow 6000',
+    colorway: 'Food Fight',
+    releaseDate: '2025-07-01T09:00:00Z',
+    retailPrice: 140,
+    price: 140,
+    imageUrl: 'https://images.unsplash.com/photo-1542291026-7eec264c27c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: false,
+    description: 'The Saucony Shadow 6000 "Food Fight" pays homage to classic deli sandwiches with a playful color-blocked design featuring premium materials and retro running aesthetics.'
+  },
+  {
+    id: '13',
+    brand: 'Reebok',
+    model: 'Club C 85',
+    colorway: 'Chalk White',
+    releaseDate: '2025-06-20T11:00:00Z',
+    retailPrice: 90,
+    price: 90,
+    imageUrl: 'https://images.unsplash.com/photo-1512374382149-233c42b6a83b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: true,
+    description: 'The Reebok Club C 85 "Chalk White" is a timeless tennis-inspired sneaker featuring a clean leather upper, classic Reebok branding, and a versatile minimalist design.'
+  },
+  {
+    id: '14',
+    brand: 'PUMA',
+    model: 'RS-X',
+    colorway: 'Neon Burst',
+    releaseDate: '2025-07-10T08:00:00Z',
+    retailPrice: 120,
+    price: 120,
+    imageUrl: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: true,
+    description: 'The PUMA RS-X "Neon Burst" delivers bold streetwear vibes with its vibrant colorway, chunky sole, and modern running-inspired design.'
+  },
+  {
+    id: '15',
+    brand: 'Under Armour',
+    model: 'Curry Flow 10',
+    colorway: 'Championship Drive',
+    releaseDate: '2025-06-25T10:00:00Z',
+    retailPrice: 160,
+    price: 160,
+    imageUrl: 'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: false,
+    description: 'The Curry Flow 10 "Championship Drive" is a high-performance basketball shoe featuring UA Flow technology, designed for Stephen Curry\'s explosive playing style.'
+  },
+  {
+    id: '16',
+    brand: 'Fila',
+    model: 'Disruptor II',
+    colorway: 'Premium Leather',
+    releaseDate: '2025-08-05T09:00:00Z',
+    retailPrice: 85,
+    price: 85,
+    imageUrl: 'https://images.unsplash.com/photo-1582711012124-a56f957a1b16?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: true,
+    description: 'The Fila Disruptor II "Premium Leather" updates the iconic chunky sneaker with high-quality leather and a sleek monochromatic design.'
+  },
+  {
+    id: '17',
+    brand: 'Mizuno',
+    model: 'Wave Rider',
+    colorway: 'Midnight Blue',
+    releaseDate: '2025-07-15T11:00:00Z',
+    retailPrice: 150,
+    price: 150,
+    imageUrl: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: true,
+    description: 'The Mizuno Wave Rider "Midnight Blue" offers premium running performance with its advanced Wave technology and sophisticated dark blue colorway.'
+  },
+  {
+    id: '18',
+    brand: 'Salomon',
+    model: 'XT-6',
+    colorway: 'Urban Trail',
+    releaseDate: '2025-08-10T08:00:00Z',
+    retailPrice: 190,
+    price: 190,
+    imageUrl: 'https://images.unsplash.com/photo-1545289414-1c3cb8ee0c69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: false,
+    description: 'The Salomon XT-6 "Urban Trail" brings trail running technology to street style, featuring advanced grip and protective design.'
+  },
+  {
+    id: '19',
+    brand: 'Onitsuka Tiger',
+    model: 'Mexico 66',
+    colorway: 'Delicate Blue',
+    releaseDate: '2025-06-30T10:00:00Z',
+    retailPrice: 110,
+    price: 110,
+    imageUrl: 'https://images.unsplash.com/photo-1491553895911-0055eca6fc9b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: true,
+    description: 'The Onitsuka Tiger Mexico 66 "Delicate Blue" reimagines the classic vintage sneaker with a soft blue colorway and signature side stripes.'
+  },
+  {
+    id: '20',
+    brand: 'Li-Ning',
+    model: 'Way of Wade 10',
+    colorway: 'Miami Nights',
+    releaseDate: '2025-07-20T09:00:00Z',
+    retailPrice: 200,
+    price: 200,
+    imageUrl: 'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+    status: 'upcoming',
+    inStock: true,
+    description: 'The Li-Ning Way of Wade 10 "Miami Nights" is a signature basketball shoe celebrating Dwyane Wade\'s legacy with vibrant colors and cutting-edge performance technology.'
+  }
+];
+
+mockSneakers.push(...additionalSneakers);
 
 export function getSneakers(): Promise<Sneaker[]> {
   return new Promise((resolve) => {
