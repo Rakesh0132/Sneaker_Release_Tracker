@@ -2,10 +2,11 @@
 import { Heart } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import SneakerCard from "@/components/SneakerCard"
+import type { Sneaker } from "@/services/sneakerService"
 
 const Favorites = () => {
   // This would typically come from an API or context
-  const favorites = [
+  const favorites: Sneaker[] = [
     {
       id: "1",
       brand: "Nike",
@@ -13,7 +14,11 @@ const Favorites = () => {
       colorway: "Bred",
       retailPrice: 129.99,
       releaseDate: "2024-05-01",
-      imageUrl: "https://api.dicebear.com/7.x/shapes/svg?seed=airmax90"
+      imageUrl: "https://api.dicebear.com/7.x/shapes/svg?seed=airmax90",
+      status: "upcoming",
+      price: 129.99,
+      inStock: true,
+      description: "Classic Nike Air Max 90 in the iconic Bred colorway."
     },
     {
       id: "2",
@@ -22,7 +27,11 @@ const Favorites = () => {
       colorway: "Chicago",
       retailPrice: 169.99,
       releaseDate: "2024-06-15",
-      imageUrl: "https://api.dicebear.com/7.x/shapes/svg?seed=jordan1"
+      imageUrl: "https://api.dicebear.com/7.x/shapes/svg?seed=jordan1",
+      status: "upcoming",
+      price: 169.99,
+      inStock: true,
+      description: "The legendary Air Jordan 1 High in the Chicago colorway."
     }
   ]
 
@@ -46,4 +55,3 @@ const Favorites = () => {
 }
 
 export default Favorites
-
